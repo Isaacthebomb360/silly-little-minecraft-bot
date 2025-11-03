@@ -1,0 +1,17 @@
+{
+  "server": {
+    "host": "65.108.131.37",
+    "port": 10600,
+    "version": "1.21.4"
+  },
+  "bot": {
+    "username": "IsaacsBot",
+    "auth": "microsoft"
+  },
+  "commands": {
+    "prefix": "!",
+    "allowed_users": [
+      "Isaacthebomb360"
+    ]
+  }
+}
