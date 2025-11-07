@@ -1,4 +1,4 @@
 # silly-little-minecraft-bot
 
-### run `bot/working minecraft bot 2.py` as it is the latest and most functional script version
-- it can only connect
+### run `vOMEGA_2/bot_controller.py` as it is the latest and most functional script version
+- it can connect and chop wood
