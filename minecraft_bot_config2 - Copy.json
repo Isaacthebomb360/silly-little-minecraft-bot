@@ -1,0 +1,28 @@
+{
+    "server": {
+        "host": "65.108.131.37",
+        "port": 10600,
+        "version": "1.21.4"
+    },
+    "bot": {
+        "username": "IsaacsBot",
+        "auth": "offline"
+    },
+    "commands": {
+        "prefix": "!",
+        "allowed_users": [
+            "Isaacthebomb360"
+        ]
+    },
+    "tasks": {
+        "mining_depth": 10,
+        "woodcutting_radius": 15,
+        "safe_inventory_items": [
+            "dirt",
+            "cobblestone",
+            "wooden_axe",
+            "stone_axe",
+            "iron_axe"
+        ]
+    }
+}
