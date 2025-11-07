@@ -1,26 +1,10 @@
 {
-  "name": "silly-little-minecraft-bot",
-  "version": "1.0.0",
-  "description": "- it can only connect",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Isaacthebomb360/silly-little-minecraft-bot.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/Isaacthebomb360/silly-little-minecraft-bot/issues"
-  },
-  "homepage": "https://github.com/Isaacthebomb360/silly-little-minecraft-bot#readme",
   "dependencies": {
+    "ajv": "^8.17.1",
     "minecraft-data": "^3.100.0",
     "mineflayer": "^4.33.0",
-    "mineflayer-pathfinder": "^2.4.5"
+    "mineflayer-pathfinder": "^2.4.5",
+    "prismarine-viewer": "^1.33.0",
+    "uri-js": "^4.4.1"
   }
 }

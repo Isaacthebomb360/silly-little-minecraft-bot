@@ -5,10 +5,10 @@ import time
 import os
 
 HOST = "localhost"
-PORT = 56546
+PORT = 52387
 USERNAME = "IsaacsFembo(y)t"
 ALLOWED_USER = "Isaacthebomb360"
-COMMAND_PREFIX = "!bot"
+COMMAND_PREFIX = "!"
 
 env = os.environ.copy()
 env.update({"HOST": HOST, "PORT": str(PORT), "USERNAME": USERNAME})
@@ -49,36 +49,79 @@ def handle_chat(user, msg):
     if not args:
         return
     command = args[0]
-
-    if command == "hello":
-        send_command("chat", {"message": f"Hello {user}!"})
-    elif command == "status":
-        send_command("chat", {"message": "All systems nominal."})
-    elif command == "jump":
-        send_command("jump", {})
-    elif command == "come":
-        send_command("come", {"position": {"x": 10, "y": 64, "z": 10}})
-    elif command == "move" and len(args) > 1:
-        send_command("move", {"direction": args[1]})
-    elif command == "pickup":
-        send_command("pickup", {})
-    elif command == "chop":
-        send_command("chop", {})
-    elif command == "mine" and len(args) > 6:
-        send_command("mine", {
-            "start": {"x": int(args[1]), "y": int(args[2]), "z": int(args[3])},
-            "end": {"x": int(args[4]), "y": int(args[5]), "z": int(args[6])}
-        })
-    elif command == "respawn":
-        send_command("respawn", {})
-    elif command == "help":
-        send_command("help", {})
-    elif command == "chest":
-        send_command("chest", {})
-    elif command == "follow" and len(args) > 1:
-        send_command("follow", {"player": args[1]})
-    else:
-        send_command("chat", {"message": f"Unknown command: {command}"})
+    
+    match command:
+        case "hello":
+            send_command("chat", {"message": f"Hello {user}!"})
+        case "status":
+            send_command("chat", {"message": "All systems nominal."})
+        case "time":
+            send_command("chat", {"message": f"Current time is {time.strftime('%H:%M:%S')}"})
+        case "date":
+            send_command("chat", {"message": f"Today's date is {time.strftime('%Y-%m-%d')}"})
+        case "report":
+            send_command("chat", {"message": f"Status report for {time.strftime('%Y-%m-%d %H:%M:%S')}: All systems nominal."})
+            
+        case "jump":
+            send_command("jump", {})
+        case "come":
+            send_command("come", {"player": user})
+        case "respawn":
+            send_command("respawn", {})
+        case "help":
+            send_command("help", {})
+        case "chest":
+            send_command("chest", {})
+        case "follow":
+            target = args[1] if len(args) > 1 else user
+            send_command("follow", {"player": target})
+        case "stop":
+            send_command("stop", {})
+        case "deforest":
+            send_command("deforest", {})
+        case "farm":
+            send_command("farm", {})
+        case "stripmine":
+            if len(args) > 6:
+                send_command("stripmine", {
+                    "start": {"x": int(args[1]), "y": int(args[2]), "z": int(args[3])},
+                    "end": {"x": int(args[4]), "y": int(args[5]), "z": int(args[6])}
+                })
+            else:
+                send_command("chat", {"message": "Usage: !stripmine x1 y1 z1 x2 y2 z2"})
+        case "equip":
+            send_command("equip", {})
+        case "defend":
+            send_command("defend", {})
+        case "sethome":
+            send_command("sethome", {})
+        case "home":
+            send_command("home", {})
+        case "auto":
+            if len(args) > 1:
+                if args[1] == "on":
+                    send_command("auto", {"state": True})
+                elif args[1] == "off":
+                    send_command("auto", {"state": False})
+                else:
+                    send_command("chat", {"message": "Usage: !auto <on/off>"})
+            else:
+                send_command("auto", {})
+        case _:
+            send_command("chat", {"message": f"Unknown command: {command}"})
+'''
+        case "move":
+            if len(args) > 1:
+                send_command("move", {"direction": args[1]})
+            else :
+                send_command("chat", {"message": "Usage: !move <direction>"})
+        case "pickup":
+            send_command("pickup", {})
+        case "chop":
+            send_command("chop", {})
+        case "follow-me":
+            send_command("follow-me", {"player": user})
+'''
 
 def send_command(command, args):
     msg = json.dumps({"command": command, "args": args}) + "\n"
